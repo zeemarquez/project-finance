@@ -1,0 +1,9 @@
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Old monolithic synthetic-data file (superseded by the PV_SYNTHETIC_DATA/ bundle).
+# ~1.3 GB — exceeds GitHub's 100 MB per-file limit. The per-simulation CSV bundle
+# under PV_SYNTHETIC_DATA/ is committed instead.
+**/PV_SYNTHETIC_DATA.json
+!**/PV_SYNTHETIC_DATA/PV_SYNTHETIC_DATA.json
