@@ -1,4 +1,4 @@
-# Project Finance Showcase — Solar PV
+# Project Finance Showcase
 
 A portfolio of Jupyter notebooks demonstrating **project finance modelling**, **stochastic
 methods**, and **Monte Carlo simulation** applied to a utility-scale solar PV investment.
