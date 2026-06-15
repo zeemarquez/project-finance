@@ -1,0 +1,23 @@
+# Core financial modelling library (hosted on GitHub, not PyPI)
+finmodel @ git+https://github.com/zeemarquez/finmodel.git
+
+# Numerics & data
+pandas
+numpy
+numpy-financial
+scipy
+python-dateutil
+pydantic
+
+# Solar resource modelling & data fetching
+pvlib
+requests
+
+# Plotting
+plotly
+
+# Notebook runtime & widgets
+jupyterlab
+ipykernel
+ipython
+tqdm

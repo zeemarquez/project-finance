@@ -30,17 +30,80 @@ annotated with markdown cells explaining the method step by step.
 
 ## Tech stack
 
-- **[`finmodel`](https://github.com/)** — a formula-driven financial modelling library
-  (spreadsheet-style `@row` formulas, lazy evaluation, iterative calc for circular
-  references, styled output).
+- **[`finmodel`](https://github.com/zeemarquez/finmodel)** — a formula-driven financial
+  modelling library (spreadsheet-style `@row` formulas, lazy evaluation, iterative calc
+  for circular references, styled output).
 - **`pvlib`** — clear-sky solar irradiance modelling.
 - **NASA POWER** / **ESIOS** — measured irradiance and Spanish electricity price data.
 - **`scipy.stats`** — Beta fits and Gaussian KDE.
 - **`numpy` / `numpy_financial` / `pandas`** — numerics and IRR.
 - **`plotly`** — charts (custom dark theme in each `utils/`).
 
+## Installation & setup
+
+**Prerequisites:** [Python 3.11+](https://www.python.org/downloads/) (developed on 3.14)
+and [git](https://git-scm.com/).
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/zeemarquez/project-finance.git
+cd project-finance
+```
+
+### 2. Create and activate a virtual environment
+
+```bash
+python -m venv .venv
+```
+
+```bash
+# Windows (PowerShell)
+.venv\Scripts\Activate.ps1
+
+# macOS / Linux
+source .venv/bin/activate
+```
+
+### 3. Install the dependencies
+
+All dependencies — including the `finmodel` library from
+[github.com/zeemarquez/finmodel](https://github.com/zeemarquez/finmodel) — are pinned in
+[`requirements.txt`](requirements.txt):
+
+```bash
+pip install -r requirements.txt
+```
+
+> `finmodel` is not published on PyPI, so it is installed straight from GitHub. To install
+> it on its own:
+>
+> ```bash
+> pip install git+https://github.com/zeemarquez/finmodel.git
+> ```
+>
+> If you want to hack on `finmodel` alongside these notebooks, clone it separately and do
+> an editable install instead: `git clone https://github.com/zeemarquez/finmodel.git`
+> then `pip install -e ../finmodel`.
+
+### 4. Launch Jupyter
+
+```bash
+jupyter lab
+```
+
 ## How to run
 
 Run the notebooks in order (`01` → `02` → `03a` → `03b`). Notebook `03b` depends on the
 synthetic dataset written by `03a`, which in turn depends on the merged dataset written
 by `02`.
+
+A few notes:
+
+- **Run each notebook from its own folder** so the local `utils/` helpers (Plotly theme,
+  progress widget) and `data/` paths resolve correctly.
+- **Notebook `02` needs internet access** — it fetches measured irradiance from the NASA
+  POWER API. The other notebooks read the CSV/JSON data already committed in the repo.
+- **Regenerating the synthetic data** (`03a`) writes ~1.3 GB across 1,000 CSVs into
+  `03-pv-stochastic-model/data/PV_SYNTHETIC_DATA/`; this is optional, as the bundle is
+  already committed.
